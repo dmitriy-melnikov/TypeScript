@@ -18,7 +18,7 @@ let f3: (a: number, b: number) => number;
 let f4: (x: number) => void
 
 function f5(s: string): never {
-    throw new Error(x);
+    throw new Error(s);
 }
 
 function f6(x: any, y: any): any {
@@ -41,5 +41,42 @@ function f7(x: any, y: any): any {
     }
 }
 
-console.log(f7(1, 2));
-console.log(f7('d', 1));
+//console.log(f7(1, 2));
+//console.log(f7('d', 1));
+
+//____________________________приведение типов
+let z: any = 1;
+let y: number = z;
+let h: unknown = 1
+//let i: number = h; //error
+let i: number = <number>h;
+let k: any = 'hello';
+let l: number = (<string>k).length;
+
+//____________________________unite types
+type I = number | string;
+let m: I = 1;
+
+type J = 1 | 2 | 3;
+type L = true;
+
+type JKL = J | L;
+let o: JKL = true;
+
+type M = {a: string | boolean} | {b: string};
+let p: M = { a: true, b: 'true' };
+
+//пересечение_________________________
+type N = {a: string} & {b: string};
+let q: N = {a: '', b: 'hell'};
+type O = {a: string, b?: string};
+let r: O = {a: ''};
+
+if('a' in r) {
+    console.log('cool');
+}
+
+
+
+
+
