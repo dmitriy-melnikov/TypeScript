@@ -1,13 +1,55 @@
-class Person {
+/*interface IPerson {
+    name?: string,
+    age: number,
+     //sayHi(): string
+}
+
+/!*type IPerson =  {
+    name?: string,
+    age: number,
+    //sayHi(): string
+    sayHi: () => string
+}*!/
+
+interface IPerson {
+    sayHi: () => string
+}*/
+
+/*interface IPersonProps {
+    name?: string,
+    age: number,
+}
+
+interface ITest {
+
+}
+
+interface IPerson extends IPersonProps, ITest{
+    sayHi: () => string
+}*/
+
+type IPersonProps =  {
+    name?: string,
+    age: number
+}
+
+type ITest = {
+
+}
+
+// оператор пересечения типов
+type IPerson = IPersonProps & ITest & {
+    sayHi: () => string
+}
+
+class Person implements IPerson{
     constructor(public name: string = 'Vasili', public age: number = 40) {
     }
     static isFlying = false;
     static description(): string {
         return 'Men';
     }
-    sayHi(): string {
-        return `hello ${this.name}  ${this.age}`;
-    }
+    sayHi(): string {return `hello ${this.name}  ${this.age}`}
     get namePerson(): string {
         return this.name;
     }
@@ -51,6 +93,8 @@ console.log(igor.sayHi())
 console.log(student.sayHi())
 console.log(newDenis.sayHi())
 console.log(Liza.sayHi());
+
+// interface realization
 
 
 
