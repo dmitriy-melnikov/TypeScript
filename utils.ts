@@ -23,7 +23,24 @@ type Dimension3 = MyRecord<'width' | 'height' | 'length', number>
 
 // Readonly
 type Article1 = {title: string, page: number};
-type Article2 = Readonly<Article1>
+//type Article2 = Readonly<Article1>
+type MyReadonly<T> = { readonly [P in keyof T]: T[P]};
+type Article2 = MyReadonly<Article1>
 const article1: Article1 = {title: 'hell', page: 10}
 const article2: Article2 = {title: 'hell', page: 10}
 //article2.title = 'hell2' // - error
+//const article3 = {title: 'hell', page: 10} as const
+const article3 = <const>{title: 'hell', page: 10}
+
+//ReadonlyArray
+type Articles1 = Array<Article2>
+type Articles2 = ReadonlyArray<Article2>
+
+//const articles1: Articles1 = [{title: 'art1', page: 2}, {title: 'art2', page: 3}]
+const articles1: Articles2 = [{title: 'art1', page: 2}, {title: 'art2', page: 3}]
+//articles1.push({title: 'art3', page: 4})
+const articles2 = <const>[{title: 'art1', page: 2}, {title: 'art2', page: 3}] //as const
+//articles2.push({title: 'art3', page: 4})
+
+function f11(arr: ReadonlyArray<string>) {}
+function f22(arr: readonly string[]) {}
