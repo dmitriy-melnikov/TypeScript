@@ -10,6 +10,7 @@
 
 //enum  задание понятных имен набору численных значений -> набор именованных числовых констант
 // like object and array
+debugger;
 const enum links {
     vk = 'http',
     fc = 'http',
